@@ -11,5 +11,7 @@
 1. No time limit, then you click "x" button which is top right side of the window if you want to end. 
 2. At the first time, the question isn't displayed, then you press "Judge" button without entering any words.
 
-25th, Jun, 2025
+
+on 25th, Jun, 2025
+
 Hirotoshi Uchida
