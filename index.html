@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Typing Practice Game</title>
+<style>
+*{
+text-align: center;
+font-family: "MS Gothic";
+}
+h1{
+font-size: 1.5em;
+}
+h3{
+font-size: 1.25em;
+}
+h5{
+font-size: 1em;
+}
+</style>
+</head>
+<body onload="setup();">
+<h1>Typing Practice Game</h1>
+<h3>*At the first time, you press "Judge" button without entering any words.</h3>
+<h5>Question</h5>
+<h3 id="q"></h3>
+<script>
+var words = ["human","dog","cat","mouse","cow","tiger","rabbit","dragon","snake","horse","sheep","monkey","bird","boar","sunny","cloudy","rainy","thunder","snowy","monday","tuesday","wednesday","thursday","friday","saturday","sunday","january","february","march","april","may","june","july","august","september","october","november","december","fish","world","earth"];
+var rnd = Math.floor(Math.random()*words.length);
+var rndWords = words[rnd];
+var result = document.getElementById("r");
+var count = 0;
+var data =[];
+function genQuestion(){
+rnd = Math.floor(Math.random()*words.length);
+rndWords = words[rnd];
+var target = document.getElementById("q");
+if (target){
+target.innerText=rndWords;
+}
+}
+function setup(){
+var btn=document.getElementById("judge");
+if(btn){
+btn.onclick=handle;
+}
+}
+function judge(){
+var typeValue=document.getElementById("type").value;
+result = document.getElementById("r");
+if (typeValue==rndWords){
+if (result){
+result.innerText="True. And let's try again and again.";
+data.push(true);
+}
+}else{
+result.innerText="False. But let's try again and again.";
+data.push(false);
+}
+}
+function countrue(){
+count  = 0;
+for(var i= 0; i < data.length; i++){
+if(data[i]===true){
+count++;
+}
+}
+document.getElementById("countTrue").innerText="Correct："+count;
+}
+function handle(){
+judge();
+countrue();
+genQuestion();
+}
+</script>
+<input type="text" id="type">
+<br />
+<input type="button" id="judge" value="Judge" />
+<h3 id="r"></h3>
+<h5 id="countTrue"></h5>
+</body>
+</html>
